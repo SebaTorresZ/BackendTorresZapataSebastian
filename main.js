@@ -26,7 +26,7 @@ class ProductManager {
         }
     }
 
-    addProduct(title, description, price, thumbnail, code, stock) {
+    addProduct({ title, description, price, thumbnail, code, stock }) {
         if (!title || !description || !price || !thumbnail || !code || !stock) {
             console.error('Todos los campos son obligatorios');
             return;
