@@ -8,19 +8,19 @@ class ProductManager {
         this.loadProducts(); 
     }
 
-    loadProducts() {
+    async loadProducts() {
         try {
-            const data = fs.readFileSync(this.path, 'utf-8');
+            const data = await fs.promises.readFile(this.path, 'utf-8');
             this.products = JSON.parse(data);
         } catch (error) {
             this.products = [];
         }
     }
 
-    saveProducts() {
+    async saveProducts() {
         try {
             const data = JSON.stringify(this.products, null, 2);
-            fs.writeFileSync(this.path, data);
+            await fs.promises.writeFile(this.path, data);
         } catch (error) {
             console.error('Error al guardar productos en el archivo', error);
         }
@@ -92,3 +92,5 @@ class ProductManager {
         }
     }
 }
+
+module.exports = ProductManager;
