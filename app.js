@@ -12,7 +12,7 @@ const cartManager = new CartManager('./carrito.json');
 
 app.use(express.json());
 
-// Middleware para definir la CSP
+
 app.use((req, res, next) => {
     res.setHeader(
         'Content-Security-Policy',
@@ -21,12 +21,12 @@ app.use((req, res, next) => {
     next();
 });
 
-// Ruta de bienvenida para la raíz
+
 app.get('/', (req, res) => {
     res.send('¡Bienvenido a la aplicación!');
 });
 
-// Rutas para productos
+
 const productRouter = express.Router();
 
 productRouter.get('/', async (req, res) => {
@@ -41,7 +41,7 @@ productRouter.get('/', async (req, res) => {
     }
 });
 
-// Ruta GET /:pid para obtener un producto por su id
+
 productRouter.get('/:pid', async (req, res) => {
     const productId = parseInt(req.params.pid);
 
@@ -59,7 +59,7 @@ productRouter.get('/:pid', async (req, res) => {
     }
 });
 
-// Ruta POST / para agregar un nuevo producto
+
 productRouter.post('/', (req, res) => {
     const productData = req.body;
 
@@ -71,7 +71,7 @@ productRouter.post('/', (req, res) => {
     }
 });
 
-// Ruta PUT /:pid para actualizar un producto por su id
+
 productRouter.put('/:pid', (req, res) => {
     const productId = parseInt(req.params.pid);
     const updatedFields = req.body;
@@ -84,7 +84,7 @@ productRouter.put('/:pid', (req, res) => {
     }
 });
 
-// Ruta DELETE /:pid para eliminar un producto por su id
+
 productRouter.delete('/:pid', (req, res) => {
     const productId = parseInt(req.params.pid);
 
@@ -98,7 +98,7 @@ productRouter.delete('/:pid', (req, res) => {
 
 app.use('/products', productRouter);
 
-// Rutas para carritos
+
 const cartRouter = express.Router();
 
 cartRouter.post('/', async (req, res) => {
@@ -140,12 +140,12 @@ cartRouter.post('/:cid/product/:pid', async (req, res) => {
 
 app.use('/carts', cartRouter);
 
-// Iniciar el servidor
+
 app.listen(port, () => {
     console.log(`Servidor corriendo en ${serverUrl}`);
 });
 
-// Función para hacer solicitudes GET
+
 async function testGET(url) {
     try {
         const response = await axios.get(url);
@@ -155,7 +155,7 @@ async function testGET(url) {
     }
 }
 
-// Función para hacer solicitudes POST
+
 async function testPOST(url, data) {
     try {
         const response = await axios.post(url, data);
@@ -165,7 +165,7 @@ async function testPOST(url, data) {
     }
 }
 
-// Función para hacer solicitudes PUT
+
 async function testPUT(url, data) {
     try {
         const response = await axios.put(url, data);
@@ -175,7 +175,6 @@ async function testPUT(url, data) {
     }
 }
 
-// Función para hacer solicitudes DELETE
 async function testDELETE(url) {
     try {
         const response = await axios.delete(url);
