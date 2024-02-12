@@ -26,8 +26,8 @@ class ProductManager {
         }
     }
 
-    addProduct({ title, description, price, thumbnail, code, stock }) {
-        if (!title || !description || !price || !thumbnail || !code || !stock) {
+    addProduct({ title, description, price, code, stock, status = true, category, thumbnails = [] }) {
+        if (!title || !description || !price || !code || !stock || !category) {
             console.error('Todos los campos son obligatorios');
             return;
         }
@@ -43,9 +43,11 @@ class ProductManager {
             title,
             description,
             price,
-            thumbnail,
             code,
             stock,
+            status,
+            category,
+            thumbnails,
         };
 
         this.products.push(newProduct);
