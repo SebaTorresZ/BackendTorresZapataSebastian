@@ -27,7 +27,7 @@ class CartManager {
 
     async createCart() {
         const newCart = {
-            id: Date.now().toString(), // Genera un ID único basado en el tiempo actual
+            id: Date.now().toString(),
             products: []
         };
 
@@ -55,10 +55,8 @@ class CartManager {
 
         const productIndex = cart.products.findIndex(product => product.id === productId);
         if (productIndex !== -1) {
-            // Si el producto ya está en el carrito, incrementa la cantidad
             cart.products[productIndex].quantity++;
         } else {
-            // Si el producto no está en el carrito, agrégalo con cantidad 1
             cart.products.push({ id: productId, quantity: 1 });
         }
 
