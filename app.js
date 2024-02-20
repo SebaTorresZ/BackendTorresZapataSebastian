@@ -12,7 +12,6 @@ const cartManager = new CartManager('./carrito.json');
 
 app.use(express.json());
 
-
 app.use((req, res, next) => {
     res.setHeader(
         'Content-Security-Policy',
@@ -21,11 +20,9 @@ app.use((req, res, next) => {
     next();
 });
 
-
 app.get('/', (req, res) => {
     res.send('¡Bienvenido a la aplicación!');
 });
-
 
 const productRouter = express.Router();
 
@@ -40,7 +37,6 @@ productRouter.get('/', async (req, res) => {
         res.status(500).json({ error: 'Error al obtener productos' });
     }
 });
-
 
 productRouter.get('/:pid', async (req, res) => {
     const productId = parseInt(req.params.pid);
@@ -59,7 +55,6 @@ productRouter.get('/:pid', async (req, res) => {
     }
 });
 
-
 productRouter.post('/', (req, res) => {
     const productData = req.body;
 
@@ -70,7 +65,6 @@ productRouter.post('/', (req, res) => {
         res.status(400).json({ error: 'Error al agregar producto' });
     }
 });
-
 
 productRouter.put('/:pid', (req, res) => {
     const productId = parseInt(req.params.pid);
@@ -84,7 +78,6 @@ productRouter.put('/:pid', (req, res) => {
     }
 });
 
-
 productRouter.delete('/:pid', (req, res) => {
     const productId = parseInt(req.params.pid);
 
@@ -96,8 +89,7 @@ productRouter.delete('/:pid', (req, res) => {
     }
 });
 
-app.use('/products', productRouter);
-
+app.use('/api/products', productRouter);
 
 const cartRouter = express.Router();
 
@@ -138,13 +130,11 @@ cartRouter.post('/:cid/product/:pid', async (req, res) => {
     }
 });
 
-app.use('/carts', cartRouter);
-
+app.use('/api/carts', cartRouter);
 
 app.listen(port, () => {
     console.log(`Servidor corriendo en ${serverUrl}`);
 });
-
 
 async function testGET(url) {
     try {
@@ -155,7 +145,6 @@ async function testGET(url) {
     }
 }
 
-
 async function testPOST(url, data) {
     try {
         const response = await axios.post(url, data);
@@ -164,7 +153,6 @@ async function testPOST(url, data) {
         console.error('Error en POST:', error.response.data);
     }
 }
-
 
 async function testPUT(url, data) {
     try {
