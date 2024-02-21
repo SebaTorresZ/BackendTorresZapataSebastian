@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Time Products</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        function addProduct() {
+            const productData = {
+                title: document.getElementById('title').value,
+            };
+            socket.emit('addProduct', productData);
+        }
+
+        function deleteProduct(productId) {
+            socket.emit('deleteProduct', productId);
+        }
+
+        socket.on('productAdded', (products) => {
+        });
+
+
+        socket.on('productDeleted', (productId) => {
+
+        });
+    </script>
+</head>
+<body>
+    <h1>Lista de Productos en Tiempo Real</h1>
+    <ul>
+        {{#each products}}
+        <li>{{this.title}} - {{this.price}} <button onclick="deleteProduct('{{this.id}}')">Eliminar</button></li>
+        {{/each}}
+    </ul>
+
+    <h2>Agregar Nuevo Producto</h2>
+    <input type="text" id="title" placeholder="Título">d
+    <button onclick="addProduct()">Agregar Producto</button>
+</body>
+</html>
+
+
