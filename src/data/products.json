@@ -1,0 +1,54 @@
+[
+    {
+        "id": "92ba71a6-856e-4f05-a4a8-9ff5295a3a28",
+        "title": "Té Negro Earl Grey Bravo",
+        "description": "Un clásico atemporal. Té negro de alta calidad con el toque cítrico y fragante del aceite de bergamota.",
+        "code": "ADG-EGB-100",
+        "price": 8990,
+        "status": true,
+        "stock": 50,
+        "category": "Té Negro",
+        "thumbnails": [
+            "/images/earl-grey.jpg"
+        ]
+    },
+    {
+        "id": "f2852c20-fa7d-4bb6-ae2b-c9d5416f58cf",
+        "title": "Rooibos Vainilla",
+        "description": "Infusión sudafricana sin cafeína con el dulce y cremoso sabor de la vainilla. Ideal para relajarse.",
+        "code": "ADG-ROV-100",
+        "price": 7990,
+        "status": true,
+        "stock": 45,
+        "category": "Rooibos",
+        "thumbnails": [
+            "/images/rooibos-vainilla.jpg"
+        ]
+    },
+    {
+        "id": "4148a58b-7538-40d6-8f87-0ca0c3741c29",
+        "title": "Té Verde Genmaicha",
+        "description": "Tradicional té verde japonés Bancha mezclado con granos de arroz integral tostado. Sabor a nuez y final suave.",
+        "code": "ADG-GEN-100",
+        "price": 9490,
+        "status": true,
+        "stock": 30,
+        "category": "Té Verde",
+        "thumbnails": [
+            "/images/genmaicha.jpg"
+        ]
+    },
+    {
+        "id": "2eb37d1d-d6f9-44ee-9287-6004b9e90843",
+        "title": "Infusión Cha-Cha",
+        "description": "Una explosión de energía. Mezcla de yerba mate, té verde, guaraná y un toque de limón.",
+        "code": "ADG-CHA-100",
+        "price": 8490,
+        "status": true,
+        "stock": 60,
+        "category": "Infusión Energética",
+        "thumbnails": [
+            "/images/cha-cha.jpg"
+        ]
+    }
+]
