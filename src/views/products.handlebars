@@ -1,0 +1,26 @@
+<h1>Lista de Productos</h1>
+<div class="product-list">
+    {{#each payload}}
+        <div class="product-card" style="border: 1px solid black; padding: 10px; margin: 10px;">
+            <h4>{{this.title}}</h4>
+            <p>{{this.description}}</p>
+            <p><strong>Precio:</strong> ${{this.price}}</p>
+            <p><strong>Stock:</strong> {{this.stock}}</p>
+            <button>Agregar al Carrito</button>
+        </div>
+    {{else}}
+        <p>No hay productos para mostrar.</p>
+    {{/each}}
+</div>
+
+<div class="pagination" style="margin: 20px;">
+    {{#if hasPrevPage}}
+        <a href="{{prevLink}}">&laquo; Anterior</a>
+    {{/if}}
+    
+    <span style="margin: 0 10px;">Página {{page}} de {{totalPages}}</span>
+    
+    {{#if hasNextPage}}
+        <a href="{{nextLink}}">Siguiente &raquo;</a>
+    {{/if}}
+</div>

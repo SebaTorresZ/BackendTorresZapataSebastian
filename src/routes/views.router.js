@@ -1,31 +1,36 @@
 import { Router } from 'express';
-import path from 'path';
-import { fileURLToPath } from 'url';
 import { ProductManager } from '../managers/ProductManager.js';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import { CartManager } from '../managers/CartManager.js';
 
 const router = Router();
-const productManager = new ProductManager(path.join(__dirname, '../data/products.json'));
+const productManager = new ProductManager();
+const cartManager = new CartManager();
 
-router.get('/', async (req, res) => {
+router.get('/products', async (req, res) => {
     try {
-        const products = await productManager.getProducts();
-        res.render('home', { products, title: "Home" });
+        const productsData = await productManager.getProducts(req.query);
+        res.render('products', { 
+            ...productsData, 
+            title: "Lista de Productos" 
+        });
     } catch (error) {
-        res.status(500).send('Error al obtener los productos');
+        res.status(500).send({ status: 'error', error: error.message });
     }
 });
 
-router.get('/realtimeproducts', async (req, res) => {
+router.get('/carts/:cid', async (req, res) => {
     try {
-        const products = await productManager.getProducts();
-        res.render('realTimeProducts', { products, title: "Productos en Tiempo Real" });
+        const cart = await cartManager.getCartById(req.params.cid);
+        if (!cart) {
+            return res.status(404).send('Carrito no encontrado');
+        }
+        res.render('cart', { 
+            ...cart, 
+            title: "Contenido del Carrito" 
+        });
     } catch (error) {
-        res.status(500).send('Error al obtener los productos');
+        res.status(500).send({ status: 'error', error: error.message });
     }
 });
-
 
 export default router;
