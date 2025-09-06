@@ -5,7 +5,7 @@ export class ProductManager {
     constructor() {}
 
     async getProducts(params) {
-        const { limit = 10, page = 1, sort, query } = params;
+        const { limit = 9, page = 1, sort, query } = params;
         const filter = query ? { category: query, status: true } : { status: true };
         const options = {
             page,

@@ -35,6 +35,7 @@ app.use('/api/products', productsRouter(io));
 app.use('/api/carts', cartsRouter); 
 app.use('/', viewsRouter); 
 
+
 io.on('connection', (socket) => {
     console.log('🔌 Nuevo cliente conectado');
 });
