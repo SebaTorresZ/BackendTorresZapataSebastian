@@ -5,11 +5,11 @@
                 <img src="{{this.thumbnails.[0]}}" alt="{{this.title}}" class="product-image">
             {{/if}}
             <div class="product-card-content">
-                <h4>{{this.title}}</h4>
-                <p>{{this.description}}</p>
+                <h4 class="product-title">{{this.title}}</h4>
+                <p class="product-description">{{this.description}}</p>
                 <div class="product-card-details">
-                    <p><strong>Precio: ${{this.price}}</strong></p>
-                    <p>Stock: {{this.stock}}</p>
+                    <p class="product-price">Precio: <strong>${{this.price}}</strong></p>
+                    <p class="product-stock">Stock: {{this.stock}}</p>
                 </div>
                 <button class="addToCartBtn" data-id="{{this._id}}">Agregar al Carrito</button>
             </div>
@@ -21,12 +21,12 @@
 
 <div class="pagination">
     {{#if hasPrevPage}}
-        <a href="{{prevLink}}">&laquo; Anterior</a>
+        <a href="{{prevLink}}" class="pagination-link">&laquo; Anterior</a>
     {{/if}}
     
-    <span>Página {{page}} de {{totalPages}}</span>
+    <span class="pagination-info">Página {{page}} de {{totalPages}}</span>
     
     {{#if hasNextPage}}
-        <a href="{{nextLink}}">Siguiente &raquo;</a>
+        <a href="{{nextLink}}" class="pagination-link">Siguiente &raquo;</a>
     {{/if}}
 </div>
